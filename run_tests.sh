@@ -3,10 +3,17 @@
 # Default collection file
 DEFAULT_COLLECTION="collections/restfull_booker_collection.json"
 
-# Load the .env file
+
+# Load the .env file (Insert the debug code here)
 if [ -f .env ]; then
+    echo "Loading .env file..."
     export $(grep -v '^#' .env | xargs)
+    echo "Loaded BUILD_NUMBER_CPW: $BUILD_NUMBER_CPW"
+    echo "Loaded BUILD_NUMBER_STS: $BUILD_NUMBER_STS"
+else
+    echo ".env file not found, using default build numbers"
 fi
+
 
 # Get build numbers from environment variables or default values
 BUILD_NUMBER_CPW=${BUILD_NUMBER_CPW:-'default-cpw-build-number'}

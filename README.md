@@ -10,6 +10,7 @@ Clone the repository and install the dependencies:
 git clone https://github.com/yourusername/postman-reports-with-newman.git
 cd postman-automated-tests
 npm install
+npm install newman-reporter-htmlextra --save
 
 
 ## Directory Structure
