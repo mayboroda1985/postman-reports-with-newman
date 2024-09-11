@@ -65,12 +65,12 @@ echo "Using build number STS: $BUILD_NUMBER_STS"
 # Ensure the reports directory exists
 mkdir -p reports
 
-# # Ensure newman and the htmlextra reporter are installed
-# if ! npm list -g | grep newman &> /dev/null || ! npm list -g | grep newman-reporter-htmlextra &> /dev/null
-# then
-#     echo "Newman or the htmlextra reporter is not installed, installing them now..."
-#     npm install -g newman newman-reporter-htmlextra
-# fi
+# Ensure newman and the htmlextra reporter are installed
+if ! npm list -g | grep newman &> /dev/null || ! npm list -g | grep newman-reporter-htmlextra &> /dev/null
+then
+    echo "Newman or the htmlextra reporter is not installed, installing them now..."
+    npm install -g newman newman-reporter-htmlextra
+fi
 
 # Get the collection name without the file extension for the report name
 COLLECTION_NAME=$(basename "$COLLECTION_FILE" .json)

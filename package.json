@@ -1,0 +1,27 @@
+{
+  "name": "postman-reports-with-newman",
+  "version": "1.0.0",
+  "description": "A project to automate Postman tests using Newman and Node.js.",
+  "main": "run_tests.js",
+  "newman-reporter-custom": "./index.js",
+  "scripts": {
+    "test:qa6acceptance": "newman run collections/acceptance-tests-collection.json -e environments/qa6_environment.json --reporters cli,htmlextra --reporter-htmlextra-export reports/report_acceptance.html",
+    "test:prodAcceptance": "./run_tests.sh prod restfull_booker_collection",
+    "newman": "newman run collections/restfull_booker_collection.json -e environments/prod_environment.json --reporters cli,htmlextra --reporter-htmlextra-export reports/report_restfull_booker_collection.html"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mayboroda1985/postman-reports-with-newman.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mayboroda1985/postman-reports-with-newman/issues"
+  },
+  "homepage": "https://github.com/mayboroda1985/postman-reports-with-newman#readme",
+  "dependencies": {
+    "newman": "^6.2.1"
+  }
+}

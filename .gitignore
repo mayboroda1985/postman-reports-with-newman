@@ -1,8 +1,8 @@
 .DS_Store
-/node-modules
+
 /reports/**
 *.log
 *.tmp
 .env
 .idea
-/environments
+node_modules/

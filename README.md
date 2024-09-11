@@ -151,6 +151,7 @@ Newman Runner
 To see the runner working, we'll go back into our newly created GitHub repo this time in GitHub itself.
 
 Select the root file path in master and click "Add file", "Create new file".
+
 GitHub will only look for Actions which are stored under the following file path so make sure you enter the structure exactly.
 
 Firstly, we type .github and then forward slash /.
