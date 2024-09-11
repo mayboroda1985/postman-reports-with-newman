@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        environment: [local, prod]  # List your environments here
+        environment: [prod]  # List your environments here
         collection: [restfull_booker_collection]  # List your collections here
     steps:
       - uses: actions/checkout@v2
