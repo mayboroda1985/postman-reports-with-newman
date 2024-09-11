@@ -1,39 +1,38 @@
-# This workflow will help you to produce an HTML extra test results report
-
 name: Newman Tests
 on: [push, pull_request]
 
 jobs:
   test-api:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        environment: [local, prod]  # List your environments here
+        collection: [restfull_booker_collection]  # List your collections here
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       
-   # INstall Node on the runner
       - name: Install Node
         uses: actions/setup-node@v2
         with: 
           node-version: '16.x'
 
-    
-    # Install the newman command line utility and also install the html extra reporter
       - name: Install newman
         run: |
           npm install -g newman
           npm install -g newman-reporter-htmlextra
-          
-    # Make directory to upload the test results
-      - name: Make Directory for results
-        run: mkdir -p testResults
-        
-   # Run the POSTMAN collection
-      - name: Run API Tests
-        run: newman run "collections/restfull_booker_collection.json" -e environments/prod_environment.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport_positive.html
 
-    # Upload the contents of Test Results directory to workspace
-      - name: Output the run Details
+      - name: Make Directory for Results
+        run: mkdir -p reports
+
+      - name: Run API Tests
+        run: |
+          newman run collections/${{ matrix.collection }}.json \
+          -e environments/${{ matrix.environment }}_environment.json \
+          --reporters cli,htmlextra \
+          --reporter-htmlextra-export reports/${{ matrix.collection }}_${{ matrix.environment }}_report.html
+
+      - name: Upload Test Results
         uses: actions/upload-artifact@v2
         with: 
-          name: RunReports
-          path: testResults
+          name: RunReports-${{ matrix.collection }}-${{ matrix.environment }}
+          path: reports/${{ matrix.collection }}_${{ matrix.environment }}_report.html
