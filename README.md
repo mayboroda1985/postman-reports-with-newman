@@ -71,8 +71,7 @@ newman run "$COLLECTION_FILE" -e "$ENV_FILE" -r htmlextra --reporter-htmlextra-e
 
 ##Example of the HTML REPORT
 
-<img width="957" alt="Screenshot 2024-09-20 at 7 21 59 PM" src="https://github.com/user-attachments/assets/fdfd2e9b-fc22-4ead-9b22-407cdc473b54">
-
+![Example of the HTML REPORT](reports/report_environments/assets/html_report_example.png)
 
 
 #When creating RC update package.json file line "coffeeshop_version": "version_number"
