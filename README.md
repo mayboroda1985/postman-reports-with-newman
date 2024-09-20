@@ -69,6 +69,12 @@ newman run "$COLLECTION_FILE" -e "$ENV_FILE"--reporters cli,htmlextra --reporter
 # Run Newman with the selected environment and collection files without command line
 newman run "$COLLECTION_FILE" -e "$ENV_FILE" -r htmlextra --reporter-htmlextra-export "$REPORT_FILE"
 
+##Example of the HTML REPORT
+
+<img width="957" alt="Screenshot 2024-09-20 at 7 21 59 PM" src="https://github.com/user-attachments/assets/fdfd2e9b-fc22-4ead-9b22-407cdc473b54">
+
+
+
 #When creating RC update package.json file line "coffeeshop_version": "version_number"
 ## New RC branch procedure:
 
