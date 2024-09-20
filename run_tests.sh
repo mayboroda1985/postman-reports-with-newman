@@ -8,16 +8,16 @@ DEFAULT_COLLECTION="collections/restfull_booker_collection.json"
 if [ -f .env ]; then
     echo "Loading .env file..."
     export $(grep -v '^#' .env | xargs)
-    echo "Loaded BUILD_NUMBER_CPW: $BUILD_NUMBER_CPW"
-    echo "Loaded BUILD_NUMBER_STS: $BUILD_NUMBER_STS"
+    echo "Loaded BUILD_NUMBER_RB: $BUILD_NUMBER_RB"
+    echo "Loaded BUILD_NUMBER_RB1: $BUILD_NUMBER_RB1"
 else
     echo ".env file not found, using default build numbers"
 fi
 
 
 # Get build numbers from environment variables or default values
-BUILD_NUMBER_CPW=${BUILD_NUMBER_CPW:-'default-cpw-build-number'}
-BUILD_NUMBER_STS=${BUILD_NUMBER_STS:-'default-sts-build-number'}
+BUILD_NUMBER_RB=${BUILD_NUMBER_RB:-'default-rb-build-number'}
+BUILD_NUMBER_RB1=${BUILD_NUMBER_RB1:-'default-rb1-build-number'}
 
 # Check if environment argument is provided
 if [ -z "$1" ]; then
@@ -66,8 +66,8 @@ COLLECTION_FILE="collections/${COLLECTION}.json"
 # Print paths for debugging
 echo "Using environment file: $ENV_FILE"
 echo "Using collection file: $COLLECTION_FILE"
-echo "Using build number CPW: $BUILD_NUMBER_CPW"
-echo "Using build number STS: $BUILD_NUMBER_STS"
+echo "Using build number CPW: $BUILD_NUMBER_RB"
+echo "Using build number STS: $BUILD_NUMBER_RB1"
 
 # Ensure the reports directory exists
 mkdir -p reports
@@ -99,7 +99,7 @@ if [ ! -f "$REPORT_FILE" ]; then
 fi
 
 # Call the Node.js script to append build information to the report
-node run_tests.js "$REPORT_FILE" "$BUILD_NUMBER_CPW" "$BUILD_NUMBER_STS"
+node run_tests.js "$REPORT_FILE" "$BUILD_NUMBER_RB" "$BUILD_NUMBER_RB1"
 
 # Exit with the same status as the newman run
 EXIT_STATUS=$?

@@ -3,8 +3,8 @@ const path = require('path');
 
 // Get the arguments passed to the script
 const reportFile = process.argv[2];
-const buildNumberCPW = process.argv[3];
-const buildNumberSTS = process.argv[4];
+const buildNumberRB = process.argv[3];
+const buildNumberRB1 = process.argv[4];
 
 // Check if the report file exists
 if (!fs.existsSync(reportFile)) {
@@ -25,7 +25,7 @@ fs.readFile(reportFile, 'utf8', (err, data) => {
   // Insert the build numbers without additional line breaks between them
   const updatedData = data.replace(
     pattern,
-    `$1<p><strong>CPW Build Number:</strong> ${buildNumberCPW}, <strong>STS Build Number:</strong> ${buildNumberSTS}</p>`
+    `$1<p><strong>RB Build Number:</strong> ${buildNumberRB}, <strong>RB1 Build Number:</strong> ${buildNumberRB1}</p>`
   );
 
   // Write the updated HTML back to the file
