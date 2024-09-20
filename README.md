@@ -1,7 +1,9 @@
 # API testing framework using Postman, Newman, and Node.js to automate validation of RESTful APIs across multiple environments (QA, staging)
 
 *Created modular test scripts using Bash, allowing users to run different collections (e.g., acceptance tests) with specific environment configurations through CLI.
+
 *Integrated HTML reporting using Newman and the htmlextra reporter, providing detailed test reports with dynamic build numbers and environment details.
+
 *Implemented version control using GitHub for collaboration and seamless integration with CI/CD pipelines, enabling automated test execution and HTML reporting through GitHub Actions.
 
 
