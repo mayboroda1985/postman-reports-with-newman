@@ -1,6 +1,9 @@
-# Postman Automated Tests with Reports using Newman
+# API testing framework using Postman, Newman, and Node.js to automate validation of RESTful APIs across multiple environments (QA, staging)
 
-A project to automate Postman tests using Newman and Node.js.
+*Created modular test scripts using Bash, allowing users to run different collections (e.g., acceptance tests) with specific environment configurations through CLI.
+*Integrated HTML reporting using Newman and the htmlextra reporter, providing detailed test reports with dynamic build numbers and environment details.
+*Implemented version control using GitHub for collaboration and seamless integration with CI/CD pipelines, enabling automated test execution and HTML reporting through GitHub Actions.
+
 
 ## Installation
 
@@ -13,7 +16,7 @@ npm install
 npm install newman-reporter-htmlextra --save
 
 
-## Directory Structure
+**## Directory Structure**
 Ensure your directory structure matches the following:
 /project-root
 |-- collections/
@@ -31,36 +34,36 @@ Ensure your directory structure matches the following:
 |-- run_tests.sh
 
 
-## Check Script Permissions
+**## Check Script Permissions**
 Ensure that the script has the correct permissions and is executable:
 chmod +x run_tests.sh
 
-## To run Reports with specific env and specific collection through bash , runs on background and not showing on terminal
+**## To run Reports with specific env and specific collection through bash** , runs on background and not showing on terminal
 ./run_tests.sh staging restfull_booker_collection 
 
 
-##  To run Reports with specific env and specific collection through bash , runs on background and not showing on terminal
+**##  To run Reports with specific env and specific collection through bash** , runs on background and not showing on terminal
 newman run collections/restfull_booker_collection.json -e environments/prod_environment.json -r htmlextra --reporter-htmlextra-export "reports/report_restfull_booker_collection.html"
 
 newman run collections/1_collection.json -e environments/qa1_environment.json -r htmlextra --reporter-htmlextra-export "reports/report_1_collection.html"
 
 newman run collections/2_collection.json -e environments/qa2_environment.json -r htmlextra --reporter-htmlextra-export "reports/report_2_collection.html"
 
-##Install .dotenv
+**##Install .dotenv**
 npm install dotenv
 
 
-##To run from JS file
+**##To run from JS file**
  node run_tests.js collections/1_collection.json /environments/qa1_environment.json
 
-## To run tests from package.json
+**## To run tests from package.json**
 change  line 7 to:
 
 npm run test:prodAcceptance
 npm run test:localCollectionPositive
 npm run test:qa1CollectionNegative
 
-# Run Newman with the selected environment and collection files in command line
+**# Run Newman with the selected environment and collection files in command line**
 newman run "$COLLECTION_FILE" -e "$ENV_FILE"--reporters cli,htmlextra --reporter-htmlextra-export "$REPORT_FILE"
 
 # Run Newman with the selected environment and collection files without command line
@@ -69,23 +72,23 @@ newman run "$COLLECTION_FILE" -e "$ENV_FILE" -r htmlextra --reporter-htmlextra-e
 #When creating RC update package.json file line "coffeeshop_version": "version_number"
 ## New RC branch procedure:
 
-#Create RC off the master
+**#Create RC off the master**
 Publish
 Create Pull Request
-in VSC in package.json change build version (e.g. 34.1.0 >>>34.1.1)
+in VSC in package.json change build version (e.g. 10.1.0 >>>10.1.1)
 Commit/Push to github
 In github add description, PR plus build label and RC label
 Create Draft PR
 
-#When creating PR add the following info:
+**#When creating PR add the following info:**
 Pull Request
-Release: <104.2.0>
+Release: <10.1.0>
 
 Description
-PVA v1.1
+RestfulBooker v1.1
 
 JIRA Link
-e.g. https://coffeeshop.atlassian.net/browse/CP-3476
+e.g. https://restfulbooker.atlassian.net/browse/RB-001
 
 -- If it's a PR from RC to main branch, include link to CP release PR--
 
@@ -101,7 +104,7 @@ Type of change
 
 the #!/bin/bash file (run_tests.sh) is designed to run different collections such as collections/1_collection.json or collections/2_collection.json. Here's how it works:
 
-How it handles different collections:
+##How it handles different collections:
 * The script expects the environment (like qa6, qa4, etc.) as the first argument.
 * It expects the collection name (like restfull_booker_collection, 1_collection, or 2_collection) as the second argument.
 * Key Lines in the Script:
@@ -146,7 +149,7 @@ Conclusion:
 The script is designed to be flexible and run different collections by simply passing the collection name as the second argument. If you don't specify one, it will fall back to the default collection (restfull_booker_collection.json).
 
 
-Set Up GitHub Actions workflow:
+##Set Up GitHub Actions workflow:
 
 Newman Runner
 To see the runner working, we'll go back into our newly created GitHub repo this time in GitHub itself.
@@ -159,3 +162,18 @@ Firstly, we type .github and then forward slash /.
 
 After that, we type workflows/, then give our file a name ending in .yml, which is the correct format for an actions file.
 
+
+**##Resolve github conflics in VSCODE terminal**
+    
+    If Github doesn't let you resolve conflicts there it means there are too many changes and then you can resolve conflicts in your visual studio
+    
+    1. you need to be in to your branch in VSCode : ex. **fixed-api/Updated-collection**
+    2. pull from the base branch
+    
+    **git pull origin `<base_branch_name>` ex. git pull origin RC_30.1.0**
+    
+    1. git config pull.rebase false
+    2.  git pull origin RC_10.1.0
+    3. In VSCode on the left side you will see in red changes that required in each file
+    4. Go through each one and after commit
+    5. Confirm that all changes are done in GitHub Desktop
