@@ -21,10 +21,15 @@ npm install newman-reporter-htmlextra --save
 **## Directory Structure**
 Ensure your directory structure matches the following:
 /project-root
+|-- .github/workflows
+|   |--github-actions-htmlextra-report.yml
+|-- assets
+|   |--html_report_example.png
 |-- collections/
 |   |-- restfull_booker_collection.json
 |   |-- 1_collection.json
 |   |-- 2_collection.json
+|   |--mode_modules
 |-- environments/
 |   |-- local_environment.json
 |   |-- prod_environment.json
@@ -33,7 +38,15 @@ Ensure your directory structure matches the following:
 |   |-- qa3_environment.json
 |   |-- staging_environment.json
 |-- reports/
+|-- .env
+|-- .env.example
+|-- .gitignore
+|--  index.js
+|--  package-lock.json
+|--  package.json
+|--  REASME.md
 |-- run_tests.sh
+|-- run_tests.js
 
 
 **## Check Script Permissions**
