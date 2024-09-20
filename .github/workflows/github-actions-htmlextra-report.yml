@@ -32,7 +32,7 @@ jobs:
           --reporter-htmlextra-export reports/${{ matrix.collection }}_${{ matrix.environment }}_report.html
 
       - name: Upload Test Results
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with: 
           name: RunReports-${{ matrix.collection }}-${{ matrix.environment }}
           path: reports/${{ matrix.collection }}_${{ matrix.environment }}_report.html
