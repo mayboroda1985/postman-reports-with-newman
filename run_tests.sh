@@ -87,7 +87,7 @@ DATE=$(date +"%Y%m%d_%H%M%S")
 
 
 # Create a report file name with date and collection name
-REPORT_FILE="reports/report_${ENV_FILE}_${COLLECTION_NAME}_${DATE}_${BUILD_NUMBER_STS}_${BUILD_NUMBER_CPW}.html"
+REPORT_FILE="reports/report_$(basename "$ENV_FILE" .json | cut -d'_' -f1)_${COLLECTION_NAME}_${DATE}_${BUILD_NUMBER_STS}_${BUILD_NUMBER_CPW}.html"
 
 # Run Newman with the selected environment and collection files
 newman run "$COLLECTION_FILE" -e "$ENV_FILE" --reporters cli,htmlextra --reporter-htmlextra-export "$REPORT_FILE"
