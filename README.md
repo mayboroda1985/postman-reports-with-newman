@@ -71,7 +71,7 @@ newman run "$COLLECTION_FILE" -e "$ENV_FILE" -r htmlextra --reporter-htmlextra-e
 
 ##Example of the HTML REPORT
 
-![Example of the HTML REPORT](reports/report_environments/assets/html_report_example.png)
+![Example of the HTML REPORT](./assets/html_report_example.png)
 
 
 #When creating RC update package.json file line "coffeeshop_version": "version_number"
